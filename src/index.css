@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-900: #082a42;
+  --color-navy-800: #0b3b5c;
+  --color-navy-700: #124d78;
+  --color-leaf-500: #3fb950;
+  --color-leaf-600: #2f9e42;
+  --color-leaf-100: #e3f6e6;
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: #f3f6f9;
+  color: #0f2233;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.safe-top { padding-top: env(safe-area-inset-top); }
+.card { background: #fff; border-radius: 1rem; box-shadow: 0 1px 3px rgb(11 59 92 / 0.08), 0 1px 2px rgb(11 59 92 / 0.05); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: .85rem; padding: .7rem 1.1rem; font-weight: 600; transition: transform .1s, background .15s; }
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--color-leaf-500); color: #fff; }
+.btn-primary:hover { background: var(--color-leaf-600); }
+.btn-navy { background: var(--color-navy-800); color: #fff; }
+.btn-ghost { background: #e8eef4; color: var(--color-navy-800); }
+.btn:disabled { opacity: .45; pointer-events: none; }
+.input { width: 100%; border: 1.5px solid #d5dee7; border-radius: .75rem; padding: .65rem .85rem; background: #fff; font-size: 1rem; }
+.input:focus { outline: 2px solid var(--color-leaf-500); border-color: transparent; }
+.label { display: block; font-size: .8rem; font-weight: 600; color: #4b6275; margin-bottom: .3rem; }
