@@ -12,10 +12,25 @@ export interface Profile {
   company: string
 }
 
+/** Compte stocké uniquement sur l'appareil (pas de backend). */
+export interface Account {
+  email: string
+  salt: string
+  hash: string
+  stay: boolean
+}
+
+export interface Settings {
+  carCost: number // €/km voiture
+  bikeCost: number // €/km vélo (entretien)
+}
+
 export interface Trip {
   id: string
   date: string // ISO
   km: number
+  label?: string
+  safe?: boolean
 }
 
 export interface ClaimedVoucher {
@@ -29,18 +44,19 @@ export interface ClaimedVoucher {
   date: string
 }
 
-export type RewardCategory = 'supermarche' | 'sport' | 'boulangerie' | 'velo' | 'loisirs' | 'employeur'
+export type RewardGroup = 'supermarche' | 'magasin' | 'perso'
+export type Tone = 'orange' | 'green' | 'yellow' | 'blue' | 'volt' | 'navy'
 
 export interface Reward {
   id: string
   title: string
   partner: string
-  value: number // en €
-  cost: number // en points
-  category: RewardCategory
   description: string
-  audience?: Category
-  company?: boolean
+  tag: string
+  tone: Tone
+  cost: number // points
+  value: number // valeur en €
+  group: RewardGroup
 }
 
 export type ParkingType = 'securise' | 'couvert' | 'arceau'
@@ -65,7 +81,7 @@ export interface Place {
   lng: number
 }
 
-export type EventType = 'atelier' | 'balade' | 'formation' | 'bourse' | 'challenge'
+export type EventType = 'atelier' | 'balade' | 'formation' | 'bourse' | 'entreprise'
 
 export interface ProEvent {
   id: string
@@ -78,12 +94,22 @@ export interface ProEvent {
   description: string
   seats: number
   price: string
+  points: number
+  featured?: boolean
+}
+
+export interface BonusEntry {
+  key: string
+  pts: number
 }
 
 export interface AppState {
   profile: Profile | null
+  account: Account | null
+  loggedIn: boolean
+  settings: Settings
   trips: Trip[]
   claimed: ClaimedVoucher[]
   registered: string[]
-  introSeen: boolean
+  bonusLog: BonusEntry[]
 }

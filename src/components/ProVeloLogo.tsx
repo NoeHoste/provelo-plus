@@ -14,18 +14,11 @@ interface Props {
 export function ProVeloLogo({ size = 40, withText = true, light = false }: Props) {
   const [src, setSrc] = useState('/logo-provelo.png')
   return (
-    <span className="inline-flex items-center gap-2">
-      <img
-        src={src}
-        onError={() => src !== '/logo-provelo.svg' && setSrc('/logo-provelo.svg')}
-        width={size}
-        height={size}
-        alt="Pro Velo"
-        className="rounded-xl"
-      />
+    <span className="inline-flex items-center gap-2.5">
+      <img src={src} onError={() => src !== '/logo-provelo.svg' && setSrc('/logo-provelo.svg')} width={size} height={size} alt="Pro Velo" className="rounded-xl" />
       {withText && (
-        <span className={`font-extrabold leading-none tracking-tight ${light ? 'text-white' : 'text-navy-800'}`} style={{ fontSize: size * 0.5 }}>
-          Pro Velo <span className="text-leaf-500">Plus</span>
+        <span className={`font-bold leading-none tracking-tight ${light ? 'text-white' : 'text-forest-900'}`} style={{ fontSize: size * 0.45 }}>
+          Pro Velo <span className={light ? 'text-volt-400' : 'text-forest-700'}>Plus</span>
         </span>
       )}
     </span>

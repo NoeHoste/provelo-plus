@@ -1,32 +1,50 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy-900: #082a42;
-  --color-navy-800: #0b3b5c;
-  --color-navy-700: #124d78;
-  --color-leaf-500: #3fb950;
-  --color-leaf-600: #2f9e42;
-  --color-leaf-100: #e3f6e6;
+  --font-sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-forest-950: #082a20;
+  --color-forest-900: #0c3b2d;
+  --color-forest-800: #14503f;
+  --color-forest-700: #1e6450;
+  --color-volt-300: #dcfa7a;
+  --color-volt-400: #c8f52f;
+  --color-volt-500: #b4e01a;
+  --color-paper: #f2f4ee;
+  --color-ink: #0c3b2d;
 }
 
 html, body, #root { height: 100%; }
 body {
   margin: 0;
-  background: #f3f6f9;
-  color: #0f2233;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
   -webkit-tap-highlight-color: transparent;
 }
+button { font-family: inherit; }
 .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
 .safe-top { padding-top: env(safe-area-inset-top); }
-.card { background: #fff; border-radius: 1rem; box-shadow: 0 1px 3px rgb(11 59 92 / 0.08), 0 1px 2px rgb(11 59 92 / 0.05); }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: .85rem; padding: .7rem 1.1rem; font-weight: 600; transition: transform .1s, background .15s; }
-.btn:active { transform: scale(.97); }
-.btn-primary { background: var(--color-leaf-500); color: #fff; }
-.btn-primary:hover { background: var(--color-leaf-600); }
-.btn-navy { background: var(--color-navy-800); color: #fff; }
-.btn-ghost { background: #e8eef4; color: var(--color-navy-800); }
-.btn:disabled { opacity: .45; pointer-events: none; }
-.input { width: 100%; border: 1.5px solid #d5dee7; border-radius: .75rem; padding: .65rem .85rem; background: #fff; font-size: 1rem; }
-.input:focus { outline: 2px solid var(--color-leaf-500); border-color: transparent; }
-.label { display: block; font-size: .8rem; font-weight: 600; color: #4b6275; margin-bottom: .3rem; }
+
+.card { background: #fff; border-radius: 1.25rem; box-shadow: 0 1px 2px rgb(12 59 45 / 0.06); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 1rem; padding: .95rem 1.2rem; font-weight: 700; transition: transform .1s, opacity .15s; }
+.btn:active { transform: scale(.98); }
+.btn:disabled { opacity: .4; pointer-events: none; }
+.btn-volt { background: var(--color-volt-400); color: var(--color-forest-900); }
+.btn-dark { background: var(--color-forest-900); color: #fff; }
+.btn-outline { border: 1.5px solid var(--color-forest-900); color: var(--color-forest-900); background: transparent; }
+.input { width: 100%; border: 1.5px solid #e1e5dc; border-radius: .9rem; padding: .8rem .95rem; background: #fff; font-size: 1rem; color: var(--color-ink); font-family: inherit; }
+.input::placeholder { color: #9aa79f; }
+.input:focus { outline: 2px solid var(--color-volt-500); border-color: transparent; }
+.label { display: block; font-size: .75rem; font-weight: 600; color: #4a5c53; margin-bottom: .3rem; }
+.chip { flex-shrink: 0; border-radius: 999px; padding: .5rem 1rem; font-size: .85rem; font-weight: 600; background: #fff; border: 1.5px solid #e1e5dc; color: var(--color-forest-900); }
+.chip[aria-pressed="true"] { background: var(--color-forest-900); color: #fff; border-color: var(--color-forest-900); }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Curseur de distance */
+.range { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; border-radius: 999px; background: #d9dcd5; outline: none; }
+.range::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 24px; border-radius: 5px; background: var(--color-forest-900); border: 2px solid #fff; box-shadow: 0 1px 3px rgb(0 0 0 / .3); cursor: pointer; }
+.range::-moz-range-thumb { width: 12px; height: 22px; border-radius: 5px; background: var(--color-forest-900); border: 2px solid #fff; cursor: pointer; }
+
+@keyframes rise { from { transform: translateY(12px); opacity: 0 } to { transform: none; opacity: 1 } }
+.rise { animation: rise .35s ease both; }
