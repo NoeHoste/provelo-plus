@@ -35,7 +35,7 @@ export function Home({ onNav }: { onNav: (t: TabId) => void }) {
     <div className="mx-auto max-w-md space-y-5 px-5 pt-8">
       <header className="flex items-start justify-between">
         <div>
-          <p className="text-sm text-[#4a5c53]">{capitalize(new Date().toLocaleDateString('fr-BE', { weekday: 'long', day: 'numeric', month: 'long' }))}</p>
+          <p className="text-sm text-[#4a6275]">{capitalize(new Date().toLocaleDateString('fr-BE', { weekday: 'long', day: 'numeric', month: 'long' }))}</p>
           <h1 className="text-3xl font-bold">Salut {p?.prenom} !</h1>
         </div>
         <div className="flex items-center gap-2">
@@ -86,9 +86,9 @@ export function Home({ onNav }: { onNav: (t: TabId) => void }) {
             <span className={`grid h-14 w-14 shrink-0 place-items-center rounded-2xl text-lg font-bold ${TONES[perso.tone]}`}>{perso.tag}</span>
             <span className="min-w-0 flex-1">
               <span className="block font-bold">{perso.title}</span>
-              <span className="block text-sm text-[#4a5c53]">{perso.description} · {perso.cost} pts</span>
+              <span className="block text-sm text-[#4a6275]">{perso.description} · {perso.cost} pts</span>
             </span>
-            <ChevronRight className="text-[#5b6b64]" />
+            <ChevronRight className="text-[#5d7284]" />
           </button>
         </section>
       )}
@@ -99,14 +99,14 @@ export function Home({ onNav }: { onNav: (t: TabId) => void }) {
           <button onClick={() => setAdding(true)} className="flex items-center gap-1 rounded-full bg-forest-900 px-3 py-1.5 text-sm font-bold text-volt-400"><Plus size={15} /> Ajouter</button>
         </div>
         {trips.length === 0 ? (
-          <p className="card p-5 text-center text-sm text-[#4a5c53]">Aucun trajet pour l’instant. Lance un itinéraire ou ajoute un trajet pour gagner tes premiers points !</p>
+          <p className="card p-5 text-center text-sm text-[#4a6275]">Aucun trajet pour l’instant. Lance un itinéraire ou ajoute un trajet pour gagner tes premiers points !</p>
         ) : (
           <div className="card divide-y divide-black/5">
             {trips.slice(0, 5).map((t) => (
               <div key={t.id} className="flex items-center justify-between gap-3 px-4 py-3">
                 <div className="min-w-0">
                   <p className="truncate font-bold">{t.label ?? 'Trajet libre'}</p>
-                  <p className="text-sm text-[#4a5c53]">{relativeDay(t.date)} · {fmtNum(t.km, 1)} km{t.safe ? ' · itinéraire sûr' : ''}</p>
+                  <p className="text-sm text-[#4a6275]">{relativeDay(t.date)} · {fmtNum(t.km, 1)} km{t.safe ? ' · itinéraire sûr' : ''}</p>
                 </div>
                 <span className="font-bold text-forest-700">+{pointsFor(t.km)} pts</span>
               </div>

@@ -9,7 +9,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['logo-provelo.svg', 'icons/*.png'],
+      includeAssets: ['logo-mark.png', 'icons/*.png'],
       manifest: {
         name: 'Pro Velo Plus',
         short_name: 'ProVelo+',
@@ -19,8 +19,8 @@ export default defineConfig({
         scope: '/',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#0c3b2d',
-        theme_color: '#0c3b2d',
+        background_color: '#0b3c5d',
+        theme_color: '#0b3c5d',
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },

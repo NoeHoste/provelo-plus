@@ -49,7 +49,7 @@ export function ProfilePage({ onBack, onLogout }: { onBack: () => void; onLogout
               ...(p.category === 'employe' ? [['Société', p.company]] : []),
               ...(p.category === 'sans_emploi' ? [['Revenu principal', INCOME_LABEL[p.income]]] : []),
             ] as string[][]).map(([k, v]) => (
-              <div key={k} className="flex justify-between gap-4 px-4 py-3.5"><span className="text-[#4a5c53]">{k}</span><span className="text-right font-bold">{v}</span></div>
+              <div key={k} className="flex justify-between gap-4 px-4 py-3.5"><span className="text-[#4a6275]">{k}</span><span className="text-right font-bold">{v}</span></div>
             ))}
           </div>
           <button className="btn btn-dark w-full" onClick={() => setEditing(true)}><Pencil size={16} /> Modifier mon profil</button>
@@ -57,7 +57,7 @@ export function ProfilePage({ onBack, onLogout }: { onBack: () => void; onLogout
         </>
       )}
 
-      <button className="flex w-full items-center justify-center gap-2 pt-4 text-xs text-[#5b6b64]" onClick={() => confirm('Effacer le compte et toutes les données de cet appareil ?') && (reset(), onLogout())}>
+      <button className="flex w-full items-center justify-center gap-2 pt-4 text-xs text-[#5d7284]" onClick={() => confirm('Effacer le compte et toutes les données de cet appareil ?') && (reset(), onLogout())}>
         <RotateCcw size={12} /> Supprimer mon compte et mes données
       </button>
     </div>

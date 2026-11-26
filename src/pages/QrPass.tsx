@@ -39,7 +39,7 @@ export function QrPass({ onProfile }: { onProfile: () => void }) {
     return (
       <div className="mx-auto max-w-md px-5 pt-8">
         <h1 className="text-3xl font-bold">Parking sécurisé</h1>
-        <div className="card mt-4 space-y-3 p-5 text-center"><p className="text-sm text-[#4a5c53]">Crée ton profil pour obtenir ton QR Code personnel.</p><button className="btn btn-volt" onClick={onProfile}>Mon profil</button></div>
+        <div className="card mt-4 space-y-3 p-5 text-center"><p className="text-sm text-[#4a6275]">Crée ton profil pour obtenir ton QR Code personnel.</p><button className="btn btn-volt" onClick={onProfile}>Mon profil</button></div>
       </div>
     )
   }
@@ -72,8 +72,8 @@ export function QrPass({ onProfile }: { onProfile: () => void }) {
         </select>
 
         <div className="rounded-[1.75rem] bg-white p-5 text-forest-900">
-          <button onClick={() => setFull(true)} aria-label="Afficher le QR en plein écran" className="mx-auto block"><QRCodeSVG value={payload} size={220} level="M" marginSize={1} fgColor="#0c3b2d" bgColor="#fff" /></button>
-          <div ref={canvasRef} className="hidden"><QRCodeCanvas value={payload} size={512} level="M" marginSize={2} fgColor="#0c3b2d" bgColor="#fff" /></div>
+          <button onClick={() => setFull(true)} aria-label="Afficher le QR en plein écran" className="mx-auto block"><QRCodeSVG value={payload} size={220} level="M" marginSize={1} fgColor="#0b3c5d" bgColor="#fff" /></button>
+          <div ref={canvasRef} className="hidden"><QRCodeCanvas value={payload} size={512} level="M" marginSize={2} fgColor="#0b3c5d" bgColor="#fff" /></div>
           <p className="mt-3 flex items-center justify-center gap-2 text-sm"><Clock size={16} /> Valide encore <b>{mm}:{ss}</b> · code <b>{code}</b></p>
         </div>
 

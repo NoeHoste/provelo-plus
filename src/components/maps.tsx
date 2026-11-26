@@ -86,7 +86,7 @@ export function DemoMap({ city, parkings, selectedId, onSelect, lanes, routes, o
   return (
     <div ref={ref} className="h-full w-full">
       <svg width={w} height={h} role="img" aria-label="Carte de démonstration">
-        <rect width={w} height={h} fill="#ece7df" />
+        <rect width={w} height={h} fill="#e9eef2" />
         {decor.parks.map((p, i) => <rect key={i} x={p.x} y={p.y} width={p.w} height={p.h} rx={14} fill="#d6e8cf" />)}
         <path d={`M0 ${decor.riverY} C ${w * 0.3} ${decor.riverY - 40}, ${w * 0.6} ${decor.riverY + 50}, ${w} ${decor.riverY - 10}`} fill="none" stroke="#bcd7ee" strokeWidth={28} />
         {decor.roads.map((r, i) => <line key={i} x1={r.x1} y1={r.y1} x2={r.x2} y2={r.y2} stroke="#fff" strokeWidth={r.w} strokeLinecap="round" />)}
@@ -98,7 +98,7 @@ export function DemoMap({ city, parkings, selectedId, onSelect, lanes, routes, o
         {routes && (
           <>
             <polyline points={line(routes.active === 'safe' ? routes.pair.fast.path : routes.pair.safe.path)} fill="none" stroke="#8b8f8a" strokeWidth={4} strokeDasharray="7 7" strokeLinecap="round" />
-            <polyline points={line(routes.pair[routes.active].path)} fill="none" stroke={routes.active === 'safe' ? '#1f8f5f' : '#0c3b2d'} strokeWidth={7} strokeLinecap="round" strokeLinejoin="round" />
+            <polyline points={line(routes.pair[routes.active].path)} fill="none" stroke={routes.active === 'safe' ? '#1f8f5f' : '#0b3c5d'} strokeWidth={7} strokeLinecap="round" strokeLinejoin="round" />
           </>
         )}
         {dangerPt && (
@@ -107,16 +107,16 @@ export function DemoMap({ city, parkings, selectedId, onSelect, lanes, routes, o
             <text x={15} y={21} textAnchor="middle" fontSize={17} fontWeight={800} fill="#fff">!</text>
           </g>
         )}
-        {origin && <circle cx={proj(origin).x} cy={proj(origin).y} r={9} fill="#fff" stroke="#0c3b2d" strokeWidth={4} />}
-        {dest && <circle cx={proj(dest).x} cy={proj(dest).y} r={10} fill="#c8f52f" stroke="#0c3b2d" strokeWidth={3} />}
+        {origin && <circle cx={proj(origin).x} cy={proj(origin).y} r={9} fill="#fff" stroke="#0b3c5d" strokeWidth={4} />}
+        {dest && <circle cx={proj(dest).x} cy={proj(dest).y} r={10} fill="#33bdf2" stroke="#0b3c5d" strokeWidth={3} />}
 
         {!routes && parkings.map((p) => {
           const q = proj(p)
           const sel = selectedId === p.id
           return (
             <g key={p.id} transform={`translate(${q.x - 28} ${q.y - 15})`} onClick={() => onSelect(p)} className="cursor-pointer" role="button" aria-label={`Parking ${p.name}`}>
-              <rect width={56} height={30} rx={15} fill={sel ? '#c8f52f' : p.type === 'securise' ? '#0c3b2d' : '#fff'} stroke={sel ? '#0c3b2d' : '#fff'} strokeWidth={2} />
-              <text x={28} y={20} textAnchor="middle" fontSize={14} fontWeight={700} fill={sel || p.type !== 'securise' ? '#0c3b2d' : '#fff'}>P {p.free}</text>
+              <rect width={56} height={30} rx={15} fill={sel ? '#33bdf2' : p.type === 'securise' ? '#0b3c5d' : '#fff'} stroke={sel ? '#0b3c5d' : '#fff'} strokeWidth={2} />
+              <text x={28} y={20} textAnchor="middle" fontSize={14} fontWeight={700} fill={sel || p.type !== 'securise' ? '#0b3c5d' : '#fff'}>P {p.free}</text>
             </g>
           )
         })}
@@ -160,7 +160,7 @@ export function GMap({ city, parkings, selectedId, onSelect, lanes, routes, orig
     >
       {lanes && <BicyclingLayer />}
       {other && <PolylineF path={other.path} options={{ strokeColor: '#8b8f8a', strokeOpacity: 0.9, strokeWeight: 4, zIndex: 1 }} />}
-      {active && <PolylineF path={active.path} options={{ strokeColor: routes!.active === 'safe' ? '#1f8f5f' : '#0c3b2d', strokeWeight: 7, zIndex: 2 }} />}
+      {active && <PolylineF path={active.path} options={{ strokeColor: routes!.active === 'safe' ? '#1f8f5f' : '#0b3c5d', strokeWeight: 7, zIndex: 2 }} />}
       {routes?.pair.danger && routes.active === 'safe' && (
         <OverlayViewF position={routes.pair.danger} mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET} getPixelPositionOffset={() => center(30, 30)}>
           <div className="grid h-[30px] w-[30px] place-items-center rounded-[9px] border-2 border-white bg-[#b3261e] text-lg font-extrabold text-white">!</div>

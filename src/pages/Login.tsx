@@ -49,7 +49,7 @@ export function Login({ onBack, onSignup }: { onBack: () => void; onSignup: () =
             </div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center gap-2"><input type="checkbox" checked={stay} onChange={(e) => setStay(e.target.checked)} className="h-4 w-4 accent-[#c8f52f]" /> Rester connecté·e</label>
+            <label className="flex items-center gap-2"><input type="checkbox" checked={stay} onChange={(e) => setStay(e.target.checked)} className="h-4 w-4 accent-[#33bdf2]" /> Rester connecté·e</label>
             <button type="button" className="font-semibold text-volt-400 underline" onClick={() => setForgot(true)}>Mot de passe oublié ?</button>
           </div>
           {err && <p role="alert" className="rounded-xl bg-red-500/20 p-3 text-sm text-red-100">{err}</p>}

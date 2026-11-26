@@ -31,13 +31,13 @@ export function CompareCalc({ editable = false }: { editable?: boolean }) {
   return (
     <div className="space-y-4">
       <section className="card space-y-3 p-4">
-        <div className="flex items-baseline justify-between text-sm font-medium text-[#4a5c53]">
+        <div className="flex items-baseline justify-between text-sm font-medium text-[#4a6275]">
           <span>Trajet aller</span>
           <span className="text-base font-bold text-forest-900">{km} km</span>
         </div>
         <input className="range" type="range" min={1} max={40} value={km} onChange={(e) => setKm(+e.target.value)} aria-label="Distance du trajet aller" />
         <div className="flex items-center gap-2">
-          <span className="mr-1 text-sm text-[#4a5c53]">Jours / sem.</span>
+          <span className="mr-1 text-sm text-[#4a6275]">Jours / sem.</span>
           {[1, 2, 3, 4, 5].map((d) => (
             <button key={d} className="chip flex-1 px-0 text-center" aria-pressed={days === d} onClick={() => setDays(d)}>{d}</button>
           ))}
@@ -76,13 +76,13 @@ export function CompareCalc({ editable = false }: { editable?: boolean }) {
           ].map(([n, l]) => (
             <div key={l as string} className="card p-3">
               <div className="text-3xl font-bold">{fmtNum(n as number)}</div>
-              <div className="mt-0.5 text-xs leading-tight text-[#4a5c53]">{l}</div>
+              <div className="mt-0.5 text-xs leading-tight text-[#4a6275]">{l}</div>
             </div>
           ))}
         </div>
       </section>
 
-      <p className="text-[11px] leading-snug text-[#5b6b64]">
+      <p className="text-[11px] leading-snug text-[#5d7284]">
         Hypothèses : voiture {fmtNum(s.carCost, 2)} €/km, vélo {fmtNum(s.bikeCost, 2)} €/km (entretien), {WORK_WEEKS} semaines par an, aller-retour.
       </p>
 
@@ -109,7 +109,7 @@ export function Compare() {
   return (
     <div className="mx-auto max-w-md px-5 pt-8">
       <h1 className="text-3xl font-bold">Comparateur</h1>
-      <p className="mb-4 text-[#4a5c53]">Combien tu gagnes en laissant la voiture au garage</p>
+      <p className="mb-4 text-[#4a6275]">Combien tu gagnes en laissant la voiture au garage</p>
       <CompareCalc editable />
     </div>
   )

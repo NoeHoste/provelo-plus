@@ -19,7 +19,7 @@ export function BottomNav({ tab, onChange }: { tab: TabId; onChange: (t: TabId) 
           const active = tab === id
           return (
             <li key={id} className="flex-1">
-              <button onClick={() => onChange(id)} aria-current={active ? 'page' : undefined} className={`flex w-full flex-col items-center gap-1 py-2.5 text-[11px] ${active ? 'font-bold text-forest-900' : 'font-medium text-[#5b6b64]'}`}>
+              <button onClick={() => onChange(id)} aria-current={active ? 'page' : undefined} className={`flex w-full flex-col items-center gap-1 py-2.5 text-[11px] ${active ? 'font-bold text-forest-900' : 'font-medium text-[#5d7284]'}`}>
                 <Icon size={22} strokeWidth={active ? 2.4 : 1.8} />
                 {label}
               </button>

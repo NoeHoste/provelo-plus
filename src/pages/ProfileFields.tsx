@@ -71,10 +71,10 @@ export function ProfileFields({ d, set, errors, middle }: Props) {
           {CATS.map((c) => {
             const on = d.category === c.id
             return (
-              <label key={c.id} className={`cursor-pointer rounded-2xl border-2 px-3 py-2.5 ${on ? 'border-forest-900 bg-forest-900 text-white' : 'border-[#e1e5dc] bg-white'}`}>
+              <label key={c.id} className={`cursor-pointer rounded-2xl border-2 px-3 py-2.5 ${on ? 'border-forest-900 bg-forest-900 text-white' : 'border-[#dbe4ec] bg-white'}`}>
                 <input type="radio" name="cat" className="sr-only" checked={on} onChange={() => set('category', c.id)} />
                 <span className="block text-sm font-bold">{c.label}</span>
-                <span className={`block text-[11px] ${on ? 'text-volt-300' : 'text-[#5b6b64]'}`}>{c.sub}</span>
+                <span className={`block text-[11px] ${on ? 'text-volt-300' : 'text-[#5d7284]'}`}>{c.sub}</span>
               </label>
             )
           })}
@@ -85,26 +85,26 @@ export function ProfileFields({ d, set, errors, middle }: Props) {
         <div className="rounded-2xl border-2 border-forest-900 p-3">
           <label className="label" htmlFor="company">Ta société</label>
           <input id="company" className="input" placeholder="Ex. : Proximus, SNCB, Ville de Mons…" value={d.company} onChange={(e) => set('company', e.target.value)} />
-          <p className="mt-2 flex items-start gap-2 text-xs text-[#4a5c53]"><Gift size={14} className="mt-0.5 shrink-0" /> Récompenses personnalisées par ton employeur + indemnité vélo.</p>
+          <p className="mt-2 flex items-start gap-2 text-xs text-[#4a6275]"><Gift size={14} className="mt-0.5 shrink-0" /> Récompenses personnalisées par ton employeur + indemnité vélo.</p>
           <Err k="company" />
         </div>
       )}
 
       {d.category === 'sans_emploi' && (
         <fieldset className="rounded-2xl border-2 border-forest-900 p-3">
-          <legend className="px-1 text-xs font-semibold text-[#4a5c53]">Ton revenu principal</legend>
+          <legend className="px-1 text-xs font-semibold text-[#4a6275]">Ton revenu principal</legend>
           <div className="grid grid-cols-2 gap-2">
             {(Object.keys(INCOME_LABEL) as Income[]).map((i) => {
               const on = d.income === i
               return (
                 <label key={i} className={`flex cursor-pointer items-center gap-2 rounded-xl border-2 px-2.5 py-2.5 text-sm font-semibold leading-tight ${on ? 'border-forest-900 bg-volt-400' : 'border-transparent bg-paper'}`}>
-                  <input type="radio" name="income" className="h-4 w-4 shrink-0 accent-[#0c3b2d]" checked={on} onChange={() => set('income', i)} />
+                  <input type="radio" name="income" className="h-4 w-4 shrink-0 accent-[#0b3c5d]" checked={on} onChange={() => set('income', i)} />
                   {INCOME_LABEL[i]}
                 </label>
               )
             })}
           </div>
-          <p className="mt-2 text-xs text-[#4a5c53]">Sert uniquement à adapter tes récompenses. Reste sur cet appareil.</p>
+          <p className="mt-2 text-xs text-[#4a6275]">Sert uniquement à adapter tes récompenses. Reste sur cet appareil.</p>
         </fieldset>
       )}
 
