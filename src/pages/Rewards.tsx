@@ -1,7 +1,7 @@
 import { Check, Gift, Ticket } from 'lucide-react'
 import { useState } from 'react'
 import { Chips, Modal, TONES } from '../components/ui'
-import { REWARDS, personalLabel, personalRewards } from '../data/rewards'
+import { baseRewards, personalLabel, personalRewards } from '../data/rewards'
 import { fmtEur, fmtNum } from '../lib/calc'
 import { useApp } from '../store/AppContext'
 import type { Reward } from '../types'
@@ -15,7 +15,7 @@ export function Rewards() {
   const [done, setDone] = useState(false)
 
   const perso = personalRewards(state.profile)
-  const list = [...perso, ...REWARDS].filter((r) => filter === 'all' || r.group === filter)
+  const list = [...perso, ...baseRewards(state.profile)].filter((r) => filter === 'all' || r.group === filter)
   const close = () => { setSel(null); setDone(false) }
 
   return (
@@ -30,6 +30,10 @@ export function Rewards() {
         </div>
         <span className="grid h-16 w-16 place-items-center rounded-full border-2 border-dashed border-forest-900"><Gift size={28} /></span>
       </section>
+
+      {state.profile?.category === 'sans_emploi' && (
+        <p className="rounded-2xl bg-forest-900 px-4 py-3 text-sm text-white">Tes bons valent <b className="text-volt-400">+20 %</b> : ils coûtent moins de points.</p>
+      )}
 
       <Chips<Filter>
         value={filter}

@@ -22,6 +22,12 @@ function load(): AppState {
     const s: AppState = { ...empty, ...JSON.parse(raw) }
     // Sans « Rester connecté·e », la session ne survit pas à la fermeture de l'app
     if (s.account && !s.account.stay) s.loggedIn = false
+    // Migration : l'ancienne catégorie « Pensionné » devient « Sans emploi · Pension ou GRAPA »
+    if (s.profile) {
+      const cat = s.profile.category as string
+      s.profile = { ...s.profile, income: s.profile.income ?? 'chomage', category: cat === 'pensionne' ? 'sans_emploi' : s.profile.category }
+      if (cat === 'pensionne') s.profile.income = 'pension'
+    }
     return s
   } catch {
     return empty

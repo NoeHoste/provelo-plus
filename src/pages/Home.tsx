@@ -29,7 +29,7 @@ export function Home({ onNav }: { onNav: (t: TabId) => void }) {
   const pct = next ? Math.min(100, Math.max(4, ((available - prev) / (next.cost - prev)) * 100)) : 100
   const perso = personalRewards(state.profile)[0]
   const p = state.profile
-  const who = p ? (p.category === 'employe' ? `employé·e chez ${p.company}` : CATEGORY_LABEL[p.category].toLowerCase() + '·e') : ''
+  const who = !p ? '' : p.category === 'employe' ? `employé·e chez ${p.company}` : p.category === 'etudiant' ? 'étudiant·e' : CATEGORY_LABEL[p.category].toLowerCase()
 
   return (
     <div className="mx-auto max-w-md space-y-5 px-5 pt-8">

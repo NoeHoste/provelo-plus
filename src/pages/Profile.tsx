@@ -1,6 +1,6 @@
 import { ChevronLeft, LogOut, Pencil, RotateCcw } from 'lucide-react'
 import { useState } from 'react'
-import { BIKE_LABEL, CATEGORY_LABEL, computeAge } from '../lib/calc'
+import { BIKE_LABEL, CATEGORY_LABEL, INCOME_LABEL, computeAge } from '../lib/calc'
 import { useApp } from '../store/AppContext'
 import { ProfileFields, cleanDraft, validateDraft, type Draft } from './ProfileFields'
 
@@ -47,6 +47,7 @@ export function ProfilePage({ onBack, onLogout }: { onBack: () => void; onLogout
               ['Vélo', `${BIKE_LABEL[p.bikeType]}${p.bikeModel ? ` · ${p.bikeModel}` : ''}`],
               ['Catégorie', CATEGORY_LABEL[p.category]],
               ...(p.category === 'employe' ? [['Société', p.company]] : []),
+              ...(p.category === 'sans_emploi' ? [['Revenu principal', INCOME_LABEL[p.income]]] : []),
             ] as string[][]).map(([k, v]) => (
               <div key={k} className="flex justify-between gap-4 px-4 py-3.5"><span className="text-[#4a5c53]">{k}</span><span className="text-right font-bold">{v}</span></div>
             ))}

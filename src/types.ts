@@ -1,4 +1,6 @@
-export type Category = 'etudiant' | 'employe' | 'pensionne' | 'sans_emploi'
+export type Category = 'etudiant' | 'employe' | 'sans_emploi'
+/** Revenu principal (uniquement pour la catégorie « Sans emploi »). */
+export type Income = 'chomage' | 'incapacite' | 'pension' | 'ris'
 export type BikeType = 'ville' | 'electrique' | 'route' | 'cargo' | 'vtt'
 
 export interface Profile {
@@ -10,6 +12,7 @@ export interface Profile {
   bikeModel: string
   category: Category
   company: string
+  income: Income
 }
 
 /** Compte stocké uniquement sur l'appareil (pas de backend). */

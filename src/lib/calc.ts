@@ -1,4 +1,4 @@
-import type { Category, Profile, Settings, Trip } from '../types'
+import type { Category, Income, Profile, Settings, Trip } from '../types'
 
 export const CAR_CO2_KG_PER_KM = 0.12
 export const POINTS_PER_KM = 10
@@ -29,8 +29,14 @@ export function computeAge(birthDate: string, now = new Date()): number | null {
 export const CATEGORY_LABEL: Record<Category, string> = {
   etudiant: 'Étudiant',
   employe: 'Employé',
-  pensionne: 'Pensionné',
   sans_emploi: 'Sans emploi',
+}
+
+export const INCOME_LABEL: Record<Income, string> = {
+  chomage: 'Allocations de chômage',
+  incapacite: 'Indemnités d’incapacité',
+  pension: 'Pension ou GRAPA',
+  ris: 'RIS ou aide du CPAS',
 }
 
 export const BIKE_LABEL = {

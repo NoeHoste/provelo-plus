@@ -1,15 +1,14 @@
 import { Gift } from 'lucide-react'
-import { BIKE_LABEL, computeAge } from '../lib/calc'
-import type { BikeType, Category, Profile } from '../types'
+import { BIKE_LABEL, INCOME_LABEL, computeAge } from '../lib/calc'
+import type { BikeType, Category, Income, Profile } from '../types'
 
 export type Draft = Omit<Profile, 'id'>
-export const blankDraft: Draft = { nom: '', prenom: '', birthDate: '', bikeType: 'ville', bikeModel: '', category: 'etudiant', company: '' }
+export const blankDraft: Draft = { nom: '', prenom: '', birthDate: '', bikeType: 'ville', bikeModel: '', category: 'etudiant', company: '', income: 'chomage' }
 
 const CATS: { id: Category; label: string; sub: string }[] = [
   { id: 'etudiant', label: 'Étudiant', sub: 'Resto & fournitures' },
   { id: 'employe', label: 'Employé', sub: 'Offres société' },
-  { id: 'pensionne', label: 'Pensionné', sub: 'Offres seniors' },
-  { id: 'sans_emploi', label: 'Sans emploi', sub: 'Offres solidaires' },
+  { id: 'sans_emploi', label: 'Sans emploi', sub: 'Bons +20 %' },
 ]
 
 export function validateDraft(d: Draft): Record<string, string> {
@@ -68,7 +67,7 @@ export function ProfileFields({ d, set, errors, middle }: Props) {
 
       <fieldset>
         <legend className="label">Ta catégorie</legend>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-3 gap-2">
           {CATS.map((c) => {
             const on = d.category === c.id
             return (
@@ -89,6 +88,24 @@ export function ProfileFields({ d, set, errors, middle }: Props) {
           <p className="mt-2 flex items-start gap-2 text-xs text-[#4a5c53]"><Gift size={14} className="mt-0.5 shrink-0" /> Récompenses personnalisées par ton employeur + indemnité vélo.</p>
           <Err k="company" />
         </div>
+      )}
+
+      {d.category === 'sans_emploi' && (
+        <fieldset className="rounded-2xl border-2 border-forest-900 p-3">
+          <legend className="px-1 text-xs font-semibold text-[#4a5c53]">Ton revenu principal</legend>
+          <div className="grid grid-cols-2 gap-2">
+            {(Object.keys(INCOME_LABEL) as Income[]).map((i) => {
+              const on = d.income === i
+              return (
+                <label key={i} className={`flex cursor-pointer items-center gap-2 rounded-xl border-2 px-2.5 py-2.5 text-sm font-semibold leading-tight ${on ? 'border-forest-900 bg-volt-400' : 'border-transparent bg-paper'}`}>
+                  <input type="radio" name="income" className="h-4 w-4 shrink-0 accent-[#0c3b2d]" checked={on} onChange={() => set('income', i)} />
+                  {INCOME_LABEL[i]}
+                </label>
+              )
+            })}
+          </div>
+          <p className="mt-2 text-xs text-[#4a5c53]">Sert uniquement à adapter tes récompenses. Reste sur cet appareil.</p>
+        </fieldset>
       )}
 
       <div>
